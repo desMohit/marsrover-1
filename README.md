@@ -1,7 +1,7 @@
 marsrover
 =========
 
-I was given this problem as a programming exercise for a recent job interview. I not sure how I went as I never got any feedback but I thought I would share it here anyhow (and in some other languages just to demonstrate a little diversity).
+I was given this problem as a programming exercise for a recent job interview. I'm not sure how I went as I never got any feedback. Regardless, I thought I would share it here anyhow (and in a few different languages just to demonstrate a little diversity).
 
 Here is the problem as it was given to me. The key thing stressed to me was it was all about the approach to the problem. Original credit for devising the exercise goes to  http://thefundoowriter.com/2009/10/01/the-mars-rover-problem/. 
 
@@ -27,6 +27,7 @@ degrees left or right respectively, without moving from its current spot.
 Assume that the square directly North from (x, y) is (x, y+1).
 
 INPUT:
+
 The first line of input is the upper-right coordinates of the plateau, the
 lower-left coordinates are assumed to be 0,0.
 
@@ -42,11 +43,13 @@ Each rover will be finished sequentially, which means that the second rover
 won’t start to move until the first one has finished moving.
 
 OUTPUT
+
 The output for each rover should be its final co-ordinates and heading.
 
 INPUT AND OUTPUT
 
 Test Input:
+
 5 5
 1 2 N
 LMLMLMLMM
@@ -54,5 +57,6 @@ LMLMLMLMM
 MMRMMRMRRM
 
 Expected Output:
+
 1 3 N
 5 1 E
