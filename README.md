@@ -1,11 +1,12 @@
 marsrover
 =========
 
-Mars Rover Problem
-
 I was given this problem as a programming exercise for a recent job interview. I not sure how I went as I never got any feedback but I thought I would share it here anyhow (and in some other languages just to demonstrate a little diversity).
 
 Here is the problem as it was given to me. The key thing stressed to me was it was all about the approach to the problem. Original credit for devising the exercise goes to  http://thefundoowriter.com/2009/10/01/the-mars-rover-problem/. 
+
+Mars Rover Exercise
+===================
 
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
 This plateau, which is curiously rectangular, must be navigated by the
@@ -55,4 +56,3 @@ MMRMMRMRRM
 Expected Output:
 1 3 N
 5 1 E
-==========
