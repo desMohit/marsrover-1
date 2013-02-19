@@ -33,16 +33,32 @@ public abstract class RoverController {
 		this.setVertex(vertex);
 	}
 	
-	public abstract void move(String roverId, int distance);
-	public abstract void turn(String roverId, Heading heading);
+	public abstract void move(String roverId, int distance) throws Exception;
+	public abstract void turn(String roverId, Heading heading) throws Exception;
 
 	/**
 	 * Add a Rover to the RoverController. When a Rover is added the 
 	 * RoverController needs to check that the initial position is not 
 	 * occupied and rover id is unique.
+	 * @throws Exception 
 	 */
-	public void addRover(String roverId, Point position, Heading heading) {
-		
+	public void addRover(String roverId, Point position, Heading heading) throws Exception {
+		this.checkPosition(position);
+        if (this.getRover(roverId) == null) {
+        	this.rovers.put(roverId, new Rover(position, heading));
+        } else {
+        	throw new Exception(String.format("A Rover with id %s already exists", roverId));
+        }
+	}
+	
+	/**
+	 * Return the Rover object associated with roverId if it exists.
+	 * 
+	 * @param roverId
+	 * @return
+	 */
+	public Rover getRover(String roverId) {
+		return this.getRovers().get(roverId);
 	}
 	
 	/**
@@ -53,7 +69,6 @@ public abstract class RoverController {
 	 * @throws Exception 
 	 */
 	protected void checkPosition(Point position) throws Exception {
-		// need to check that points of position is integers
 		if (!this.isEmpty(position)) {
 			throw new Exception(String.format("Rover already occupies %s", position.toString()));
 		} else if (!this.inGrid(position)) {
