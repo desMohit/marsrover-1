@@ -1,7 +1,7 @@
 marsrover
 =========
 
-I was given this problem as a programming exercise for a recent job interview. I'm not sure how I went as I never got any feedback. Regardless, I thought I would share it here anyhow (and in a few different languages just to demonstrate a little diversity).
+I was given this problem as a programming exercise for a recent job interview. I'm not sure how I went as I never got any feedback. Regardless, I thought I would share my solution here anyhow (and in a few different languages just to demonstrate a little diversity).
 
 Here is the problem as it was given to me. The key thing stressed to me was it was all about the approach to the problem. Original credit for devising the exercise goes to  http://thefundoowriter.com/2009/10/01/the-mars-rover-problem/. 
 

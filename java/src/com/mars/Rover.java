@@ -56,7 +56,7 @@ public class Rover {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Rover r = new Rover(new Point(2.0, 2.0, 0.0), new Heading(Math.PI/2, Math.PI/2));
+        Rover r = new Rover(new Point(2.0, 2.0, 0.0), new Heading(Math.PI/2, Math.PI/2));
 	    System.out.printf("Rover position: %s\n", r.getPosition());
 	    System.out.printf("Rover heading: %s\n", r.getHeading());
 

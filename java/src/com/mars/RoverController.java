@@ -86,11 +86,11 @@ public abstract class RoverController {
 	 */
 	private boolean inGrid(Point position) {
 		if ((this.getOrigin().getX() <= position.getX() && position.getX() <= this.getVertex().getX()) ||
-				(this.getVertex().getX() <= position.getX() && position.getX() <= this.getOrigin().getX()) &&
-				(this.getOrigin().getY() <= position.getY() && position.getY() <= this.getVertex().getY()) ||
-				(this.getVertex().getY() <= position.getY() && position.getY() <= this.getOrigin().getY()) &&
-				(this.getOrigin().getZ() <= position.getZ() && position.getZ() <= this.getVertex().getZ()) ||
-				(this.getVertex().getZ() <= position.getZ() && position.getZ() <= this.getOrigin().getZ())) {
+            (this.getVertex().getX() <= position.getX() && position.getX() <= this.getOrigin().getX()) &&
+            (this.getOrigin().getY() <= position.getY() && position.getY() <= this.getVertex().getY()) ||
+            (this.getVertex().getY() <= position.getY() && position.getY() <= this.getOrigin().getY()) &&
+            (this.getOrigin().getZ() <= position.getZ() && position.getZ() <= this.getVertex().getZ()) ||
+            (this.getVertex().getZ() <= position.getZ() && position.getZ() <= this.getOrigin().getZ())) {
 			return true;
 		} else {
 			return false;

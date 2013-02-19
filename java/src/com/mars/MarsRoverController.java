@@ -82,36 +82,36 @@ public class MarsRoverController extends RoverController {
 		MarsRoverController controller = new MarsRoverController(new Point(0, 0, 0), new Point(5, 5, 0));
 
 	    try {
-	    	//rover 1
-	    	controller.addRover("rover1", new Point(1, 2, 0), new Heading(Math.PI/2, Math.PI/2));
-	    	controller.turn("rover1",  new Heading(Math.PI/2, 0));
-	    	controller.move("rover1", 1);
-	    	controller.turn("rover1",  new Heading(Math.PI/2, 0));
-		    controller.move("rover1", 1);
-		    controller.turn("rover1",  new Heading(Math.PI/2, 0));
-		    controller.move("rover1", 1);
-		    controller.turn("rover1",  new Heading(Math.PI/2, 0));
-		    controller.move("rover1", 1);
-		    controller.move("rover1", 1);
-		    Rover r = controller.getRover("rover1");
-		    System.out.printf("Rover position: %s\n", r.getPosition());
-		    System.out.printf("Rover heading: %s\n", r.getHeading());
-	
-		    //rover 2
-		    controller.addRover("rover2", new Point(3, 3, 0), new Heading(0, Math.PI/2));
-		    controller.move("rover2", 1);
-		    controller.move("rover2", 1);
-		    controller.turn("rover2", new Heading(-Math.PI/2, 0));
-		    controller.move("rover2", 1);
-		    controller.move("rover2", 1);
-		    controller.turn("rover2", new Heading(-Math.PI/2, 0));
-		    controller.move("rover2", 1);
-		    controller.turn("rover2", new Heading(-Math.PI/2, 0));
-		    controller.turn("rover2", new Heading(-Math.PI/2, 0));
-		    controller.move("rover2", 1);
-		    r = controller.getRover("rover2");
-		    System.out.printf("Rover position: %s\n", r.getPosition());
-		    System.out.printf("Rover heading: %s\n", r.getHeading());
+            //rover 1
+            controller.addRover("rover1", new Point(1, 2, 0), new Heading(Math.PI/2, Math.PI/2));
+            controller.turn("rover1",  new Heading(Math.PI/2, 0));
+            controller.move("rover1", 1);
+            controller.turn("rover1",  new Heading(Math.PI/2, 0));
+            controller.move("rover1", 1);
+            controller.turn("rover1",  new Heading(Math.PI/2, 0));
+            controller.move("rover1", 1);
+            controller.turn("rover1",  new Heading(Math.PI/2, 0));
+            controller.move("rover1", 1);
+            controller.move("rover1", 1);
+            Rover r = controller.getRover("rover1");
+            System.out.printf("Rover position: %s\n", r.getPosition());
+            System.out.printf("Rover heading: %s\n", r.getHeading());
+
+            //rover 2
+            controller.addRover("rover2", new Point(3, 3, 0), new Heading(0, Math.PI/2));
+            controller.move("rover2", 1);
+            controller.move("rover2", 1);
+            controller.turn("rover2", new Heading(-Math.PI/2, 0));
+            controller.move("rover2", 1);
+            controller.move("rover2", 1);
+            controller.turn("rover2", new Heading(-Math.PI/2, 0));
+            controller.move("rover2", 1);
+            controller.turn("rover2", new Heading(-Math.PI/2, 0));
+            controller.turn("rover2", new Heading(-Math.PI/2, 0));
+            controller.move("rover2", 1);
+            r = controller.getRover("rover2");
+            System.out.printf("Rover position: %s\n", r.getPosition());
+            System.out.printf("Rover heading: %s\n", r.getHeading());
 	    } catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
