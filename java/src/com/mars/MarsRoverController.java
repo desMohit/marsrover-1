@@ -41,12 +41,12 @@ public class MarsRoverController extends RoverController {
 			y = r.getPosition().getY();
 			z = r.getPosition().getZ();
 			x += Math.sin(r.getHeading().getZenith())*Math.cos(r.getHeading().getAzimuth());
-            y += Math.sin(r.getHeading().getZenith())*Math.sin(r.getHeading().getAzimuth());
-            z += Math.cos(r.getHeading().getZenith());
-            Point position = new Point(Math.round(x), Math.round(y), Math.round(z));
-            this.checkPosition(position);
-            r.setPosition(position);
-            this.move(roverId, distance - 1);
+			y += Math.sin(r.getHeading().getZenith())*Math.sin(r.getHeading().getAzimuth());
+			z += Math.cos(r.getHeading().getZenith());
+			Point position = new Point(Math.round(x), Math.round(y), Math.round(z));
+			this.checkPosition(position);
+			r.setPosition(position);
+			this.move(roverId, distance - 1);
 		} else if (distance < 0) {
 			throw new Exception("Rover can only move in the forward direction");
 		}
@@ -63,13 +63,13 @@ public class MarsRoverController extends RoverController {
 	@Override
 	public void turn(String roverId, Heading heading) throws Exception {
 		if (heading.getAzimuth() % (Math.PI/2) == 0.0 && heading.getZenith() % (Math.PI/2) == 0.0) {
-            Rover r = this.getRover(roverId);
-            double az, z;
-            az = r.getHeading().getAzimuth();
-            z = r.getHeading().getZenith();
-            az += heading.getAzimuth();
-            z += heading.getZenith();
-            r.setHeading(new Heading(az, z));
+			Rover r = this.getRover(roverId);
+			double az, z;
+			az = r.getHeading().getAzimuth();
+			z = r.getHeading().getZenith();
+			az += heading.getAzimuth();
+			z += heading.getZenith();
+			r.setHeading(new Heading(az, z));
 		} else {
             throw new Exception("Rover can only turn orthognally");
 		}
@@ -82,39 +82,38 @@ public class MarsRoverController extends RoverController {
 		MarsRoverController controller = new MarsRoverController(new Point(0, 0, 0), new Point(5, 5, 0));
 
 	    try {
-            //rover 1
-            controller.addRover("rover1", new Point(1, 2, 0), new Heading(Math.PI/2, Math.PI/2));
-            controller.turn("rover1",  new Heading(Math.PI/2, 0));
-            controller.move("rover1", 1);
-            controller.turn("rover1",  new Heading(Math.PI/2, 0));
-            controller.move("rover1", 1);
-            controller.turn("rover1",  new Heading(Math.PI/2, 0));
-            controller.move("rover1", 1);
-            controller.turn("rover1",  new Heading(Math.PI/2, 0));
-            controller.move("rover1", 1);
-            controller.move("rover1", 1);
-            Rover r = controller.getRover("rover1");
-            System.out.printf("Rover position: %s\n", r.getPosition());
-            System.out.printf("Rover heading: %s\n", r.getHeading());
-
-            //rover 2
-            controller.addRover("rover2", new Point(3, 3, 0), new Heading(0, Math.PI/2));
-            controller.move("rover2", 1);
-            controller.move("rover2", 1);
-            controller.turn("rover2", new Heading(-Math.PI/2, 0));
-            controller.move("rover2", 1);
-            controller.move("rover2", 1);
-            controller.turn("rover2", new Heading(-Math.PI/2, 0));
-            controller.move("rover2", 1);
-            controller.turn("rover2", new Heading(-Math.PI/2, 0));
-            controller.turn("rover2", new Heading(-Math.PI/2, 0));
-            controller.move("rover2", 1);
-            r = controller.getRover("rover2");
-            System.out.printf("Rover position: %s\n", r.getPosition());
-            System.out.printf("Rover heading: %s\n", r.getHeading());
+			//rover 1
+			controller.addRover("rover1", new Point(1, 2, 0), new Heading(Math.PI/2, Math.PI/2));
+			controller.turn("rover1",  new Heading(Math.PI/2, 0));
+			controller.move("rover1", 1);
+			controller.turn("rover1",  new Heading(Math.PI/2, 0));
+			controller.move("rover1", 1);
+			controller.turn("rover1",  new Heading(Math.PI/2, 0));
+			controller.move("rover1", 1);
+			controller.turn("rover1",  new Heading(Math.PI/2, 0));
+			controller.move("rover1", 1);
+			controller.move("rover1", 1);
+			Rover r = controller.getRover("rover1");
+			System.out.printf("Rover position: %s\n", r.getPosition());
+			System.out.printf("Rover heading: %s\n", r.getHeading());
+			
+			//rover 2
+			controller.addRover("rover2", new Point(3, 3, 0), new Heading(0, Math.PI/2));
+			controller.move("rover2", 1);
+			controller.move("rover2", 1);
+			controller.turn("rover2", new Heading(-Math.PI/2, 0));
+			controller.move("rover2", 1);
+			controller.move("rover2", 1);
+			controller.turn("rover2", new Heading(-Math.PI/2, 0));
+			controller.move("rover2", 1);
+			controller.turn("rover2", new Heading(-Math.PI/2, 0));
+			controller.turn("rover2", new Heading(-Math.PI/2, 0));
+			controller.move("rover2", 1);
+			r = controller.getRover("rover2");
+			System.out.printf("Rover position: %s\n", r.getPosition());
+			System.out.printf("Rover heading: %s\n", r.getHeading());
 	    } catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+    		e.printStackTrace();
 		}
 
 	}

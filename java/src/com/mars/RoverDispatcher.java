@@ -29,10 +29,46 @@ public class RoverDispatcher {
     }
 	
 	private MarsRoverController controller;
-	private ArrayList<Rover> rovers;
+	private ArrayList<String> rovers;
 	private ArrayList<String> instructions;
 
+	/**
+	 * Dispatch Rover input to RoverController.
+	 * @throws Exception 
+	 */
+	private void dispatch() throws Exception {
+		String rover;
+		String instruction;
+		for (int j = 0; j < rovers.size(); j++) {
+			rover = this.rovers.get(j);
+			instruction = this.instructions.get(j);
+			for (int i = 0; i < instruction.length(); i++){
+			    char c = instruction.charAt(i);
+			    if (c == 'L') {
+			    	this.turn_left(rover);
+			    } else if (c == 'R') {
+			    	this.turn_right(rover);
+			    } else if (c == 'M') {
+			    	this.move(rover);
+			    } else {
+			    	throw new Exception(String.format("'unknown instruction %s", c));
+			    }
+			}
+		}
+	}
 	
+	private String mapControllerHeading(double heading) {
+		for (String h : HEADINGS.keySet()) {
+			if (HEADINGS.get(h).equals(heading)) {
+				return h;
+			}
+		}
+		return null;
+	}
+	
+	private double mapUserHeading(String heading) {
+		return HEADINGS.get(heading);
+	}
 	/**
 	 * Move the nominated Rover forward 1 position.
 	 * 
@@ -41,6 +77,22 @@ public class RoverDispatcher {
 	 */
 	private void move(String roverId) throws Exception {
 		this.controller.move(roverId, 1);
+	}
+	
+	/**
+	 * Renders view to user.
+	 * 
+	 * @return
+	 */
+	private String renderView() {
+		String output = "";
+		for (String roverId: this.rovers) {
+			Rover r = this.controller.getRover(roverId);
+			Point p = r.getPosition();
+			String h = this.mapControllerHeading(r.getHeading().getAzimuth());
+			output += String.format("%d %d %s\n", p.getX(), p.getY(), h);
+		}
+		return output;
 	}
 	
 	
@@ -68,8 +120,6 @@ public class RoverDispatcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Oi this is compiling");
 
 	}
 
