@@ -17,7 +17,7 @@
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"/>
+    <javac includeantruntime="true" srcdir="${src}" destdir="${build}"/>
   </target>
 
   <target name="dist" depends="compile"
@@ -36,10 +36,19 @@
         <java jar="${dist}/lib/${ant.project.name}.jar" fork="true"/>
   </target>
 
+  <target name="test" depends="dist">
+        <junit printsummary="yes">
+            <batchtest fork="yes">
+                <fileset dir="${src}/com/mars" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+    </target>
+
   <target name="clean"
         description="clean up" >
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
+
 </project>
