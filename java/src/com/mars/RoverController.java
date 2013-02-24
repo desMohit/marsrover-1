@@ -63,7 +63,8 @@ public abstract class RoverController {
 	
 	/**
 	 * Checks the specified position raising the appropriate exception if
-	 * position is illegal.
+	 * position is illegal. Custom exceptions for these different case
+	 * probably would have been ideal...
 	 * 
 	 * @param position
 	 * @throws Exception 
@@ -85,12 +86,12 @@ public abstract class RoverController {
 	 * @return
 	 */
 	private boolean inGrid(Point position) {
-		if ((this.getOrigin().getX() <= position.getX() && position.getX() <= this.getVertex().getX()) ||
-            (this.getVertex().getX() <= position.getX() && position.getX() <= this.getOrigin().getX()) &&
-            (this.getOrigin().getY() <= position.getY() && position.getY() <= this.getVertex().getY()) ||
-            (this.getVertex().getY() <= position.getY() && position.getY() <= this.getOrigin().getY()) &&
-            (this.getOrigin().getZ() <= position.getZ() && position.getZ() <= this.getVertex().getZ()) ||
-            (this.getVertex().getZ() <= position.getZ() && position.getZ() <= this.getOrigin().getZ())) {
+		if (((this.getOrigin().getX() <= position.getX() && position.getX() <= this.getVertex().getX()) ||
+            (this.getVertex().getX() <= position.getX() && position.getX() <= this.getOrigin().getX())) &&
+            ((this.getOrigin().getY() <= position.getY() && position.getY() <= this.getVertex().getY()) ||
+            (this.getVertex().getY() <= position.getY() && position.getY() <= this.getOrigin().getY())) &&
+            ((this.getOrigin().getZ() <= position.getZ() && position.getZ() <= this.getVertex().getZ()) ||
+            (this.getVertex().getZ() <= position.getZ() && position.getZ() <= this.getOrigin().getZ()))) {
 			return true;
 		} else {
 			return false;

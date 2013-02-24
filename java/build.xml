@@ -7,6 +7,10 @@
   <property name="build" location="build"/>
   <property name="dist"  location="dist"/>
 
+  <path id="classpath">
+        <fileset dir="${dist}/lib" includes="**/*.jar"/>
+    </path>
+
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
@@ -32,20 +36,22 @@
     </jar>
   </target>
 
-  <target name="run" depends="dist" description="run interactive solution">
+  <target name="run" depends="dist" description="run solution">
         <java jar="${dist}/lib/${ant.project.name}.jar" fork="true"/>
   </target>
 
   <target name="test" depends="dist">
         <junit printsummary="yes">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
             <batchtest fork="yes">
-                <fileset dir="${src}/com/mars" includes="*Test.java"/>
+                <fileset dir="${src}" includes="**/*Test.java"/>
             </batchtest>
         </junit>
     </target>
 
-  <target name="clean"
-        description="clean up" >
+  <target name="clean" description="clean up" >
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
