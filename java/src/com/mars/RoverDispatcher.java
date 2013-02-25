@@ -201,15 +201,25 @@ public class RoverDispatcher {
 	 * Build:		ant dist
 	 * 
 	 * Usage:
-	 * Interactive 	javac -jar MarsRoverProject.jar
-	 * Batch       	cat inputfile.txt | javac -jar MarsRoverProject.jar
+	 * Interactive 	java -jar MarsRoverProject.jar
+	 * Batch       	cat inputfile.txt | java -jar MarsRoverProject.jar
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		ArrayList<String> input = new ArrayList<String>();
 		if (System.console() != null) {
-			System.out.println("We have a console get input from user");
+			input.add(System.console().readLine("Please enter grid vertex e.g. x y: ").trim());
+			while (true) {
+				String r = System.console().readLine("Please enter Rover e.g. x y H (enter to dispatch): ");
+				if (r.equals("")) {
+					break;
+				} else {
+					input.add(r);
+				}
+				input.add(System.console().readLine("Please enter Rover instructions:").trim());
+			}
+			
 		} else {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		    String line;
