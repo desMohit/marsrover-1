@@ -17,6 +17,19 @@ public class Heading {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass() == this.getClass()) {
+			Heading h = (Heading) obj;
+			if (h.getAzimuth() == this.getAzimuth() && h.getZenith() == this.getZenith())
+				return true;
+			else
+				return false;
+		} else {
+			return super.equals(obj);
+		}
+	}
+	
+	@Override
 	public String toString() {
 		return String.format("(%f, %f)", this.getAzimuth(), this.getZenith());
 	}

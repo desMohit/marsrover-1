@@ -40,7 +40,7 @@ public class RoverDispatcher {
 	 * Dispatch Rover input to RoverController.
 	 * @throws Exception 
 	 */
-	private void dispatch() throws Exception {
+	public void dispatch() throws Exception {
 		String rover;
 		String instruction;
 		for (int j = 0; j < rovers.size(); j++) {
@@ -86,7 +86,7 @@ public class RoverDispatcher {
 	 * Parse input string.
 	 * @throws Exception 
 	 */
-	private void parseInput(ArrayList<String> input) throws Exception {
+	public void parseInput(ArrayList<String> input) throws Exception {
 		this.parseVertex(input.get(0));
 		this.controller = new MarsRoverController(new Point(0, 0, 0), this.vertex);
 		for (int i = 1; i < input.size(); i+=2) {
@@ -163,7 +163,7 @@ public class RoverDispatcher {
 	 * 
 	 * @return
 	 */
-	private String renderView() {
+	public String renderView() {
 		String output = "";
 		for (String roverId: this.rovers) {
 			Rover r = this.controller.getRover(roverId);
