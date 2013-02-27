@@ -13,18 +13,17 @@ class RoverController
         virtual void move(std::string roverId, int distance) =0;
         virtual void turn(std::string roverId, Heading heading) =0;
         void addRover(std::string roverId, Point &position, Heading &heading);
-        std::map<std::string, Rover>::const_iterator getRover(std::string roverId);
+        Rover getRover(std::string roverId);
+
+    protected:
+        void checkPosition(Point &position);        
         
     private:
-        /* member variables */
+        bool inGrid(Point &position);
+        bool isEmpty(Point &position);
         Point origin;
         Point vertex;
         std::map<std::string, Rover> rovers;
-
-        /* member method */
-        void checkPosition(Point &position);
-        bool inGrid(Point &position);
-        bool isEmpty(Point &position);
 
 };
 

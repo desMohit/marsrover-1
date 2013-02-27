@@ -2,18 +2,21 @@
 
 void RoverController::addRover(std::string roverId, Point &position, Heading &heading) {
 	this->checkPosition(position);
-    std::map<std::string, Rover>::const_iterator iter;
-    iter = this->getRover(roverId);
-    if (iter == this->rovers.end()) {
+    if (this->rovers.find(roverId) == this->rovers.end()) {
         this->rovers.insert(std::pair<std::string, Rover>(roverId, Rover(position, heading)));
     } else {
         // throw exception
-        std::cout << "Throw exception" << std::endl;
+        std::cout << "Throw exception rover already exists" << std::endl;
     }
 }
 
-std::map<std::string, Rover>::const_iterator RoverController::getRover(std::string roverId) {
-    return this->rovers.find(roverId);
+Rover RoverController::getRover(std::string roverId) {
+    std::map<std::string, Rover>::const_iterator iter;
+    iter = this->rovers.find(roverId);
+    if (iter == this->rovers.end()) {
+        std::cout << "Throw exception rover does not exist" << std::endl;
+    } else {
+    return iter->second;}
 }
 
 void RoverController::checkPosition(Point &position) {
@@ -44,8 +47,8 @@ bool RoverController::isEmpty(Point &position) {
     for (iter=this->rovers.begin(); iter != this->rovers.end(); ++iter) {
         Rover r = iter->second;
         if (r.getPosition() == position) {
-            return true;        
+            return false;        
         }        
     }
-    return false;
+    return true;
 }
