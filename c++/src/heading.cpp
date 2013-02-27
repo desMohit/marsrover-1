@@ -15,11 +15,11 @@ bool Heading::operator== (Heading heading)  {
     }
 }
 
-double Heading::getAzimuth() {
+double Heading::getAzimuth() const {
     return this->azimuth;
 }
 
-double Heading::getZenith() {
+double Heading::getZenith() const {
     return this->zenith;
 }
 

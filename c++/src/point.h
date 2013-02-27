@@ -11,7 +11,7 @@ class Point
         Point(double x, double y, double z);
         bool operator == (Point);
         friend std::ostream& operator<<(std::ostream& os, Point p) {
-            os << "(" << p.getX() << ", " << p.getY() << ", " << p.getZ() << ")" << std::endl;
+            os << "(" << p.getX() << ", " << p.getY() << ", " << p.getZ() << ")";
             os.flush();
             return os;
         }
