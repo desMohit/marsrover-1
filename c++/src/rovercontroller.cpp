@@ -1,6 +1,6 @@
 #include "rovercontroller.h"
 
-void RoverController::addRover(std::string roverId, Point &position, Heading &heading) {
+void RoverController::addRover(std::string roverId, const Point &position, const Heading &heading) {
 	this->checkPosition(position);
     if (this->rovers.find(roverId) == this->rovers.end()) {
         this->rovers.insert(std::pair<std::string, Rover>(roverId, Rover(position, heading)));
@@ -16,10 +16,11 @@ Rover RoverController::getRover(std::string roverId) {
     if (iter == this->rovers.end()) {
         std::cout << "Throw exception rover does not exist" << std::endl;
     } else {
-    return iter->second;}
+    return iter->second;
+    }
 }
 
-void RoverController::checkPosition(Point &position) {
+void RoverController::checkPosition(const Point &position) {
 	if (!this->isEmpty(position)) {
         // throw exception
         std::cout << "Rover already occupies " << position << std::endl;
@@ -29,7 +30,7 @@ void RoverController::checkPosition(Point &position) {
 	}
 }
 
-bool RoverController::inGrid(Point &position) {
+bool RoverController::inGrid(const Point &position) {
 	if (((this->origin.getX() <= position.getX() && position.getX() <= this->vertex.getX()) ||
         (this->vertex.getX() <= position.getX() && position.getX() <= this->origin.getX())) &&
         ((this->origin.getY() <= position.getY() && position.getY() <= this->vertex.getY()) ||
@@ -42,7 +43,7 @@ bool RoverController::inGrid(Point &position) {
 	}
 }
 
-bool RoverController::isEmpty(Point &position) {
+bool RoverController::isEmpty(const Point &position) {
     std::map<std::string, Rover>::const_iterator iter;
     for (iter=this->rovers.begin(); iter != this->rovers.end(); ++iter) {
         Rover r = iter->second;

@@ -7,9 +7,10 @@
 class Rover
 {
     public:
+        Rover() {}
         Rover(const Point &position, const Heading &heading);
-        Point getPosition();
-        Heading getHeading();
+        Point getPosition() const;
+        Heading getHeading() const;
         void setPosition(Point position);
         void setHeading(Heading heading);
     private:

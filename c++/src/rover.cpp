@@ -5,11 +5,11 @@ Rover::Rover(const Point &position, const Heading &heading){
     this->setHeading(heading);
 }
 
-Point Rover::getPosition() {
+Point Rover::getPosition() const {
     return this->position;
 }
 
-Heading Rover::getHeading() {
+Heading Rover::getHeading() const {
     return this->heading;
 }
 

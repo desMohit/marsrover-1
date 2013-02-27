@@ -18,9 +18,8 @@ void MarsRoverController::move(std::string roverId, int distance) {
 		z += cos(r.getHeading().getZenith());
         Point position(round(x), round(y), round(z));
 		this->checkPosition(position);
-        std::cout << "setting position to:" << position << std::endl;
 		r.setPosition(position);
-        std::cout << "position in map: " << r.getPosition() << std::endl;
+        this->rovers[roverId] = r;
 		this->move(roverId, distance - 1);
 	} else if (distance < 0) {
 		std::cout << "Rover can only move in the forward direction" << std::endl;
@@ -36,6 +35,7 @@ void MarsRoverController::turn(std::string roverId, Heading heading) {
 			az += heading.getAzimuth();
 			z += heading.getZenith();
 			r.setHeading(Heading(az, z));
+            this->rovers[roverId] = r;
 		} else {
             std::cout << "Rover can only turn orthognally" << std::endl;
 		}

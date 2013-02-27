@@ -15,9 +15,9 @@ class Point
             os.flush();
             return os;
         }
-        double getX();
-        double getY();
-        double getZ();
+        double getX() const;
+        double getY() const;
+        double getZ() const;
         void setX(double x);
         void setY(double y);
         void setZ(double z);
