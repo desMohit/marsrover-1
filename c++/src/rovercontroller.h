@@ -8,6 +8,7 @@
 class RoverController
 {
     public:
+        RoverController() {}
         RoverController(const Point &origin, const Point &vertex)
             : origin(origin), vertex(vertex) {}
         virtual void move(std::string roverId, int distance) =0;

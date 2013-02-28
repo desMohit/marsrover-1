@@ -7,9 +7,25 @@
 #include "point.h"
 #include "rover.h"
 #include "marsrovercontroller.h"
+#include "roverdispatcher.h"
 
 int main (void)
 {
+    std::vector<std::string> input;
+    input.push_back("5 5");
+	input.push_back("1 2 N");
+	input.push_back("LMLMLMLMM");
+	input.push_back("3 3 E");
+	input.push_back("MMRMMRMRRM");
+    RoverDispatcher dispatcher;
+    dispatcher.parseInput(input);
+    dispatcher.dispatch();
+    dispatcher.renderView();
+
+    return 0;
+}
+
+/*
     puts ("Hello World!");
     puts ("This is " PACKAGE_STRING ".");
 
@@ -46,5 +62,11 @@ int main (void)
     std::cout << "Rover position: " << r.getPosition() << std::endl;
     std::cout << "Rover heading: " << r.getHeading() << std::endl;
 
-    return 0;
-}
+
+    controller.addRover("r0", Point(2, 1, 0), Heading(M_PI/2 , M_PI/2));
+	controller.move("r0", 1);
+	std::cout << (controller.getRover("r0").getPosition() == Point(2, 2, 0)) << std::endl;
+	controller.move("r0", 3);
+    std::cout << (controller.getRover("r0").getPosition() == Point(2, 5, 0)) << std::endl;
+	controller.move("r0", 1);
+*/

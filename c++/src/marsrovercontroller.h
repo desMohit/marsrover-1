@@ -5,6 +5,7 @@
 
 class MarsRoverController: public RoverController {
     public:
+        MarsRoverController() {}
         MarsRoverController(const Point &origin, const Point &vertex)
         : RoverController(origin, vertex) {}
         void move(std::string roverId, int distance);

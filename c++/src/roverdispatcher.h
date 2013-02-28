@@ -8,15 +8,16 @@
 class RoverDispatcher {
     public:
         void dispatch();
-        void parseInput(std::string input);
+        void parseInput(std::vector<std::string> input);
+        std::string renderView();
         
     private:
         std::string mapControllerHeading(double heading);
+        double mapUserHeading(std::string heading);
         void move(std::string roverId);
         void parseInstruction(std::string input);
         void parseRover(std::string input);
         void parseVertex(std::string input);
-        std::string renderView();
         void turnLeft(std::string roverId);
         void turnRight(std::string roverId);
 
@@ -24,7 +25,6 @@ class RoverDispatcher {
         std::vector<std::string> rovers;
         std::vector<std::string> instructions;
         Point vertex;
-        std::map<double, std::string> headings;
 };
 
 #endif
