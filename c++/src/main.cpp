@@ -1,12 +1,6 @@
-#include <cmath>
 #include <config.h>
-#include <iostream>
-#include <stdio.h>
 
-#include "heading.h"
-#include "point.h"
-#include "rover.h"
-#include "marsrovercontroller.h"
+
 #include "roverdispatcher.h"
 
 int main (void)
