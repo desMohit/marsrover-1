@@ -7,10 +7,10 @@ int main (void)
 {
     std::vector<std::string> input;
     input.push_back("5 5");
-	input.push_back("1 2 N");
-	input.push_back("LMLMLMLMM");
-	input.push_back("3 3 E");
-	input.push_back("MMRMMRMRRM");
+    input.push_back("1 2 N");
+    input.push_back("LMLMLMLMM");
+    input.push_back("3 3 E");
+    input.push_back("MMRMMRMRRM");
     RoverDispatcher dispatcher;
     dispatcher.parseInput(input);
     dispatcher.dispatch();
