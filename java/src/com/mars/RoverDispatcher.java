@@ -68,7 +68,6 @@ public class RoverDispatcher {
 				return h;
 			}
 		}
-		System.out.println("heading: " + heading);
 		return null;
 	}
 
