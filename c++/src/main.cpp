@@ -1,6 +1,5 @@
 #include <config.h>
 
-
 #include "roverdispatcher.h"
 
 int main (void)

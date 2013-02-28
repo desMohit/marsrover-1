@@ -27,29 +27,30 @@ void RoverDispatcher::dispatch() {
         for (int i = 0; i < instruction.size(); i++) {
             char c = instruction[i];
             if (c == 'L') {
-		    	this->turnLeft(rover);
-		    } else if (c == 'R') {
-		    	this->turnRight(rover);
-		    } else if (c == 'M') {
-		    	this->move(rover);
-		    } else {
-		    	std::cout << "unknown instruction " << c << std::endl;
-		    }
+                this->turnLeft(rover);
+            } else if (c == 'R') {
+                this->turnRight(rover);
+            } else if (c == 'M') {
+                this->move(rover);
+            } else {
+                // throw exception
+                std::cout << "unknown instruction " << c << std::endl;
+            }
         }
     }
 }
 
 std::string RoverDispatcher::mapControllerHeading(double heading) {
     std::string output;
-    if (fabs(heading) == 0.0)
+    if (fabs(heading) == 0.0) {
         output = "E";
-    else if (fabs(heading) == M_PI/2)
+    } else if (fabs(heading) == M_PI/2) {
         output = "N";
-    else if (fabs(heading) == 3*M_PI/2)
+    } else if (fabs(heading) == 3*M_PI/2) {
         output = "S";
-    else if (fabs(heading) == M_PI)
+    } else if (fabs(heading) == M_PI) {
         output = "W";
-    else {
+    } else {
         // throw exception
         std::cout << "unknown controller heading " << heading << std::endl;
     }
@@ -84,7 +85,7 @@ void RoverDispatcher::parseInput(std::vector<std::string> input) {
 		this->parseRover(input[i]);
 	}
 	for (int i = 2; i < input.size(); i+=2) {
-		this->parseInstruction(input[i]);
+        this->parseInstruction(input[i]);
 	}
 }
 
