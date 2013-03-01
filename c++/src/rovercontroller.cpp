@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "rovercontroller.h"
 
 void RoverController::addRover(std::string roverId, const Point &position, const Heading &heading) {
@@ -5,8 +7,7 @@ void RoverController::addRover(std::string roverId, const Point &position, const
     if (this->rovers.find(roverId) == this->rovers.end()) {
         this->rovers.insert(std::pair<std::string, Rover>(roverId, Rover(position, heading)));
     } else {
-        // throw exception
-        std::cout << "Throw exception rover already exists" << std::endl;
+        throw "Throw exception rover already exists";
     }
 }
 
@@ -14,8 +15,7 @@ Rover RoverController::getRover(std::string roverId) {
     std::map<std::string, Rover>::const_iterator iter;
     iter = this->rovers.find(roverId);
     if (iter == this->rovers.end()) {
-        // throw exception
-        std::cout << "Throw exception rover does not exist" << std::endl;
+        throw "Rover does not exist";
     } else {
         return iter->second;
     }
@@ -23,11 +23,13 @@ Rover RoverController::getRover(std::string roverId) {
 
 void RoverController::checkPosition(const Point &position) {
     if (!this->isEmpty(position)) {
-        // throw exception
-        std::cout << "Rover already occupies " << position << std::endl;
+        std::ostringstream pos;
+        pos << position;
+        throw "Rover already occupies " + pos.str();
     } else if (!this->inGrid(position)) {
-        // throw exception
-        std::cout << "Position " << position << " is out of grid " << std::endl;
+        std::ostringstream pos;
+        pos << position;
+        throw "Position " + pos.str() + " is out of grid ";
     }
 }
 

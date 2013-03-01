@@ -33,8 +33,7 @@ void RoverDispatcher::dispatch() {
             } else if (c == 'M') {
                 this->move(rover);
             } else {
-                // throw exception
-                std::cout << "unknown instruction " << c << std::endl;
+                throw "unknown instruction " + c;
             }
         }
     }
@@ -51,8 +50,7 @@ std::string RoverDispatcher::mapControllerHeading(double heading) {
     } else if (fabs(heading) == M_PI) {
         output = "W";
     } else {
-        // throw exception
-        std::cout << "unknown controller heading " << heading << std::endl;
+        throw "unknown controller heading";
     }
     return output;
 }
@@ -68,8 +66,7 @@ double RoverDispatcher::mapUserHeading(std::string heading) {
     } else if (heading == "W") {
         output = M_PI;
     } else {
-        // throw exception
-        std::cout << "unknown user heading " << heading << std::endl;    
+        throw "unknown user heading " + heading;
     }
     return output;
 }
@@ -101,8 +98,7 @@ void RoverDispatcher::parseRover(std::string input) {
         this->controller.addRover(input, position, heading);
         this->rovers.push_back(input);
     } else {
-        // throw exception
-        std::cout << "Incorrectly specified Rover." << std::endl;
+        throw "Incorrectly specified Rover.";
     }
 }
 
@@ -111,19 +107,19 @@ void RoverDispatcher::parseVertex(std::string input) {
     if (v.size() == 2) {
         this->vertex = Point(atoi(v[0].c_str()), atoi(v[1].c_str()), 0);
     } else {
-        // throw exception
-        std::cout << "vertex must be specified int int." << std::endl;
+        throw "vertex must be specified int int.";
     }
 }
 
 std::string RoverDispatcher::renderView() {
-    // TODO format string    
-    std::string output("");
+    std::string output;
     for(int i=0; i < this->rovers.size(); i++) {
         Rover r = this->controller.getRover(this->rovers[i]);
         Point p = r.getPosition();
         std::string h = this->mapControllerHeading(r.getHeading().getAzimuth());
-        std::cout << p.getX() << " " << p.getY() << " " << h << std::endl;
+        std::ostringstream pos;
+        pos << (int) p.getX() << " " << (int) p.getY() << " ";
+        output += pos.str() + h + "\n";
     }
     return output;
 }

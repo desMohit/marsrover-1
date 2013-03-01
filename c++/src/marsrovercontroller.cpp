@@ -22,7 +22,7 @@ void MarsRoverController::move(std::string roverId, int distance) {
         this->rovers[roverId] = r;
         this->move(roverId, distance - 1);
 	} else if (distance < 0) {
-        std::cout << "Rover can only move in the forward direction" << std::endl;
+        throw "Rover can only move in the forward direction";
 	}
 }
 
@@ -37,6 +37,6 @@ void MarsRoverController::turn(std::string roverId, Heading heading) {
         r.setHeading(Heading(az, z));
         this->rovers[roverId] = r;
     } else {
-        std::cout << "Rover can only turn orthognally" << std::endl;
+        throw "Rover can only turn orthognally";
     }
 }
